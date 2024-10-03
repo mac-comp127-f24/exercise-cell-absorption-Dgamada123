@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.util.Random;
 
 @SuppressWarnings("SameParameterValue")
+
 public class CellSimulation {
     
     private CanvasWindow canvas;
