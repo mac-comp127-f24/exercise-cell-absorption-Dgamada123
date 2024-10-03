@@ -35,13 +35,13 @@ public class CellSimulation {
             for (Cell cell:cells) {
                 Point canvasCenter = new Point(canvas.getWidth() / 2.0, canvas.getHeight() / 2.0);
                 cell.moveAround(canvasCenter);
-                cell.grow(0.02);
 
             }
             
 
             canvas.draw();
             canvas.pause(10);
+            handleCellInteraction();
             
         }
     }
@@ -62,22 +62,22 @@ public class CellSimulation {
             Color.getHSBColor(rand.nextFloat(), rand.nextFloat() * 0.5f + 0.1f, 1));
             canvas.add(cell.getShape());
             cells.add(cell);
-
-            
-
         } 
-
     }
 
 
+    private void handleCellInteraction() {
+        for (int i = 0; i < cells.size(); i++) {
+            Cell cell0 = cells.get(i);
+            for (int j = i + 1; j < cells.size(); j++) {
+                Cell cell1 = cells.get(j);
+                cell1.interactWith(cell0);
+            }
+        }
+    }
 
-    
     private static double sqr(double x) {
         return x * x;
     }
 
-    // private static double normalizeRadians(double theta) {
-    //     double pi2 = Math.PI * 2;
-    //     return ((theta + Math.PI) % pi2 + pi2) % pi2 - Math.PI;
-    // }
 }
