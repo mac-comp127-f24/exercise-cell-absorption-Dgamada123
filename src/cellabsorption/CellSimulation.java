@@ -32,8 +32,17 @@ public class CellSimulation {
         //noinspection InfiniteLoopStatement
         while (true) {
 
+            for (Cell cell:cells) {
+                Point canvasCenter = new Point(canvas.getWidth() / 2.0, canvas.getHeight() / 2.0);
+                cell.moveAround(canvasCenter);
+                cell.grow(0.02);
+
+            }
+            
+
             canvas.draw();
             canvas.pause(10);
+            
         }
     }
 
@@ -54,9 +63,7 @@ public class CellSimulation {
             canvas.add(cell.getShape());
             cells.add(cell);
 
-            Point canvasCenter = new Point(canvas.getWidth() / 2.0, canvas.getHeight() / 2.0);
-            cell.moveAround(canvasCenter);
-            cell.grow(0.02);
+            
 
         } 
 
