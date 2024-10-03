@@ -38,13 +38,10 @@ public class CellSimulation {
     }
 
 
-    
-
 
     private void populateCells() {
         cells = new ArrayList<>();
 
-        
 
         for (int n = 1; n <= 200; n++) {
             
@@ -61,10 +58,11 @@ public class CellSimulation {
             cell.moveAround(canvasCenter);
             cell.grow(0.02);
 
-            
-        }
-        
+        } 
+
     }
+
+
 
     
     private static double sqr(double x) {
