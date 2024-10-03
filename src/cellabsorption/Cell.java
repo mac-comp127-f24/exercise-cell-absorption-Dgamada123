@@ -25,21 +25,17 @@ public class Cell {
         direction = normalizeRadians(Math.random() * Math.PI * 2);
     }
 
-    private void grow(double amount) {
+    public Ellipse getShape() {
+        
+        return shape;
+    }
+
+    public void grow(double amount) {
         setRadius(radius + amount);
     }
 
-    private void setRadius(double newRadius) {
-        if (newRadius < 0) {
-            newRadius = 0;
-        }
-        radius = newRadius;
-        Point previousCenter = shape.getCenter();
-        shape.setSize(new Point(newRadius * 2, newRadius * 2));
-        shape.setCenter(previousCenter);
-    }
 
-    private void moveAround(Point centerOfGravity) {
+    public void moveAround(Point centerOfGravity) {
         shape.moveBy(Math.cos(direction), Math.sin(direction));
 
         double distToCenter = shape.getCenter().distance(centerOfGravity);
@@ -51,6 +47,20 @@ public class Cell {
                 + (Math.random() - 0.5) * WIGGLINESS
                 + turnTowardCenter * Math.tanh(distToCenter / WANDER_FROM_CENTER));
     }
+
+
+
+    private void setRadius(double newRadius) {
+        if (newRadius < 0) {
+            newRadius = 0;
+        }
+        radius = newRadius;
+        Point previousCenter = shape.getCenter();
+        shape.setSize(new Point(newRadius * 2, newRadius * 2));
+        shape.setCenter(previousCenter);
+    }
+
+    
 
     private static double sqr(double x) {
         return x * x;
